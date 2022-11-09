@@ -8,16 +8,13 @@ import { NativeBaseProvider } from 'native-base';
 
 import { Loading } from '@components/Loading';
 import { THEME } from './src/theme';
+import { SingIn } from '@screens/SingIn';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
     Roboto_400Regular,
     Roboto_700Bold,
   });
-
-  if (!fontsLoaded) {
-    return <Loading />;
-  }
 
   return (
     <NativeBaseProvider theme={THEME}>
@@ -26,8 +23,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-
-      <Loading />
+      {fontsLoaded ? <SingIn /> : <Loading />}
     </NativeBaseProvider>
   );
 }
